@@ -1,0 +1,21 @@
+& [flex]{
+    @include flexbox;
+    &[jc-start]{@include justify-content(flex-start);}
+    &[jc-end]{@include justify-content(flex-end);}
+    &[jc-between]{@include justify-content(space-between);}
+    &[jc-around]{@include justify-content(space-around);}
+    &[jc-center]{@include justify-content(center);}
+    &[jc-stretch]{@include align-items(stretch);}
+
+    &[column-nowrap]{@include flex-flow(column nowrap);}
+    &[column-wrap]{@include flex-flow(column wrap);}
+    &[row-nowrap]{@include flex-flow(row nowrap);}
+    &[row-wrap]{@include flex-flow(row wrap);}
+
+    &[ai-start]{@include align-items(flex-start);}
+    &[ai-end]{@include align-items(flex-end);}
+    &[ai-between]{@include align-items(space-between);}
+    &[ai-around]{@include align-items(space-around);}
+    &[ai-center]{@include align-items(center);}
+    &[ai-stretch]{@include align-items(stretch);}
+}

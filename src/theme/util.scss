@@ -1,0 +1,486 @@
+@function map-set($map, $key, $value) {
+    $new: ($key: $value);
+    @return map-merge($map, $new);
+  }
+  
+  @mixin background-size($ancho:1 , $alto:1){
+    background-size:percentage($ancho) percentage($alto);
+  }
+  @mixin sprite-position($ancho:1 , $alto:1){
+    background-position:percentage($ancho) percentage($alto);
+  }
+  
+  @mixin hidden-scrollbar(){
+    &::-webkit-scrollbar{display:none;}
+  }
+  
+  @mixin optional-at-root($sel) {
+    @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+      @content;
+    }
+  }
+  
+  @mixin placeholder {
+    @include optional-at-root('::-webkit-input-placeholder') {@content;}
+    @include optional-at-root(':-moz-placeholder') {@content;}
+    @include optional-at-root('::-moz-placeholder') {@content;}
+    @include optional-at-root(':-ms-input-placeholder') {@content;}
+  }
+  
+  @mixin unselectable(){
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+  }
+  
+  @mixin opacity($value: 0.5){
+    filter: alpha(opacity=$value * 100);
+    -khtml-opacity: $value;
+    -moz-opacity: $value;
+    opacity: $value;
+  }
+  
+  @mixin border-radius($radius:5px) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+  }
+  
+  @mixin box-shadow($argument...) {
+    $max: length($argument);
+    $arguments: '';
+    @for $i from 1 through $max {
+        $arguments: #{$arguments + nth($argument, $i)};
+        @if $i < $max {
+            $arguments: #{$arguments + ", "};
+        }
+    }
+    -webkit-box-shadow: $arguments;
+    -moz-box-shadow: $arguments;
+    -ms-box-shadow: $arguments;
+    -o-box-shadow: $arguments;
+    box-shadow: $arguments;
+  }
+  
+  @mixin drop-shadow($argument...) {
+    $max: length($argument);
+    $arguments: '';
+    @for $i from 1 through $max {
+        $arguments: #{$arguments + nth($argument, $i)};
+        @if $i < $max {
+            $arguments: #{$arguments + ", "};
+        }
+    }
+    -webkit-filter: drop-shadow($arguments);
+    filter: drop-shadow($arguments);
+  }
+  
+  @mixin box-sizing($type:border-box){
+    -webkit-box-sizing: $type;
+    -moz-box-sizing: $type;
+    -ms-box-sizing: $type;
+    -o-box-sizing: $type;
+    box-sizing: $type;
+  }
+  
+  @mixin appearance($type:none){
+    -webkit-appearance: $type;
+    -moz-appearance: $type;
+    -ms-appearance: $type;
+    -o-appearance: $type;
+    appearance: $type;
+  }
+  
+  @mixin centerVertical(){
+    top: 50%;
+    @include transform(translateY(-50%));
+  }
+  
+  @mixin centerHorizontal(){
+    left: 50%;
+    @include transform(translateX(-50%));
+  }
+  
+  @mixin linear-gradient($arguments...) {
+    background: -webkit-linear-gradient($arguments);
+    background: -o-linear-gradient($arguments);
+    background: -moz-linear-gradient($arguments);
+    background: -ms-linear-gradient($arguments);
+    background: linear-gradient($arguments);
+  }
+  
+  @mixin radial-gradient($arguments...) {
+    background: -webkit-radial-gradient($arguments);
+    background: -o-radial-gradient($arguments);
+    background: -moz-radial-gradient($arguments);
+    background: -ms-radial-gradient($arguments);
+    background: radial-gradient($arguments);
+  }
+  
+  @mixin perspective($arguments){
+    -webkit-perspective: $arguments;
+    -moz-perspective: $arguments;
+    -ms-perspective: $arguments;
+    -o-perspective: $arguments;
+    perspective: $arguments;
+  }
+  
+  @mixin rotateX($deg){
+    @include transform(rotateX($deg));
+  }
+  @mixin rotateY($deg){
+    @include transform(rotateY($deg));
+  }
+  @mixin rotate($deg: 0deg){
+    @include transform(rotate($deg));
+  }
+  
+  @mixin rotated-text($num-letters:100, $angle-span: 180deg, $angle-offset: 0deg) {
+    /*$angle-per-char: $angle-span / $num-letters;*/
+    $angle-per-char: $angle-span / ($num-letters * 1.5);
+    @for $i from 1 through $num-letters {
+      .char#{$i} {
+        @include transform(rotate($angle-offset + $angle-per-char * $i))
+      }
+    }
+  }
+  
+  @mixin transform($str) {
+    -webkit-transform: #{$str};
+    -moz-transform: #{$str};
+    -ms-transform: #{$str};
+    -o-transform: #{$str};
+    transform: #{$str};
+  }
+  
+  @mixin transform-style($style:preserve-3d){
+    -webkit-transform-style: $style;
+    -moz-transform-style: $style;
+    -ms-transform-style: $style;
+    -o-transform-style: $style;
+    transform-style: $style;
+  }
+  
+  @mixin transform-origin($args){
+    -webkit-transform-origin: $args;
+    -moz-transform-origin: $args;
+    -ms-transform-origin: $args;
+    -o-transform-origin: $args;
+    transform-origin: $args;
+  }
+  
+  @mixin transition($argument...) {
+    $max: length($argument);
+    $arguments: '';
+    @for $i from 1 through $max {
+        $arguments: #{$arguments + nth($argument, $i)};
+        @if $i < $max {
+            $arguments: #{$arguments + ", "};
+        }
+    }
+    -webkit-transition: $arguments;
+    -moz-transition: $arguments;
+    -ms-transition: $arguments;
+    -o-transition: $arguments;
+    transition: $arguments;
+  }
+  
+  //images options
+  @mixin brightness($cant:0.5){
+    -webkit-filter: brightness($cant);
+    -moz-filter: brightness($cant);
+    -o-filter: brightness($cant);
+    -ms-filter: brightness($cant);
+    filter: brightness($cant);
+  }
+  
+  @mixin blur($cant:0.5){
+    -webkit-filter: blur($cant);
+    -moz-filter: blur($cant);
+    -o-filter: blur($cant);
+    -ms-filter: blur($cant);
+    filter: blur($cant);
+  }
+  
+  //animations
+  @mixin keyframe ($animation_name) {
+      @-webkit-keyframes #{$animation_name} {@content;}
+      @-moz-keyframes #{$animation_name} {@content;}
+      @-o-keyframes #{$animation_name} {@content;}
+      @keyframes #{$animation_name} {@content;}
+  }
+  
+  @mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -ms-animation:     $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
+  }
+  
+  @mixin animation-delay($delay) {
+    -webkit-animation-delay: $delay;
+    -moz-animation-delay:    $delay;
+    -ms-animation-delay:     $delay;
+    -o-animation-delay:      $delay;
+    animation-delay:         $delay;
+  }
+  
+  @mixin backface-visibility($arg){
+    -webkit-backface-visibility: $arg;
+    -ms-backface-visibility: $arg;
+    -moz-backface-visibility: $arg;
+    backface-visibility: $arg;
+  }
+  
+  @mixin strikethroughtext($arg1:none,$arg2:none){
+    &:before, &:after {
+        content: '';
+        width: 100%;
+        position: absolute;
+        right: 0;
+        top: 50%;
+    }
+    &:before{
+        border-bottom:$arg1;
+        @include transform(skewY(-10deg));
+    }
+    &:after{
+        border-bottom:$arg2;
+        @include transform(skewY(10deg));
+    }
+  }
+  
+  @mixin moreText(){
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  @mixin rippleEffect($color: #fff, $opacity: 0.6){
+    overflow: hidden;
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: -25%;
+      top: -25%;
+      width: 150%;
+      height: 150%;
+      background: $color;
+      border-radius: 100%;
+      @include opacity($opacity);
+      @include transform(scale(0));
+    }
+    &:active:after {@include animation(ripple .7s ease-out);}
+    //&:after {visibility: hidden;}
+    //&:hover:after {visibility: visible;}
+  }
+  
+  @include keyframe(ripple){
+    0% {@include transform(scale(0));}
+    20% {@include transform(scale(1));}
+    100% {@include opacity(0); @include transform(scale(1));}
+  }
+  
+  @mixin personalIconAfter($name:'',$size:16px,$color:#000){
+    @if $name != '' {
+      @include flexbox;
+      @include justify-content(center);
+      @include flex-flow(column nowrap);
+      @include align-items(center);
+      &:after{
+        position: relative;
+        content: '';
+        @include images-icons;
+        width:$size;
+        height:$size;
+        @if $name == 'email'{
+          @include sprite-position(2,6);
+        }
+      }
+    }
+  }
+  
+  @mixin fontfamily($type:1){
+    @if $type == 10 {
+      font-family: 'Marcador','Orbitron', sans-serif;
+    }@else if $type == 9 {
+      font-family: 'Orbitron', sans-serif;
+    }@else if $type == 8 {
+      font-family: 'Exo', Arial;
+    }@else if $type == 7 {
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }@else if $type == 6 {
+      font-family: 'LaserMetal', Arial;
+    }@else if $type == 5 {
+      font-family: 'Gill', Arial;
+    }@else if $type == 4 {
+      font-family: 'Material Icons';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 14px;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      -moz-osx-font-smoothing: grayscale;
+      font-feature-settings: 'liga';
+    }@else if $type == 3 {
+      font-family: 'Oswald', sans-serif;
+    }@else if $type == 2 {
+      font-family: 'Comfortaa', Arial;
+    } @else {
+      font-family:Arial, Helvetica, sans-serif;
+    }
+  }
+  
+  @mixin materialIconAfter($name:'',$size:16px,$color:#000, $type: 4){
+    @if $name != '' {
+      @include flexbox;
+      @include justify-content(center);
+      @include flex-flow(column nowrap);
+      @include align-items(center);
+      &:after{
+        position: relative;
+        @include fontfamily($type);
+        content: $name;
+        font-size:$size;
+        color:$color;
+      }
+    }
+  }
+  
+  @mixin userPicture($size:50px, $bkg: color($colors, secondary), $color:#fff, $border: solid 2px #fff){
+    $size_middle:floor($size/2);
+    position:relative;
+    //@include box-sizing;
+    background-color:$bkg;
+    line-height:floor($size / 1.1);
+    color:$color;
+    text-align:center;
+    font-size:floor($size_middle / 1.2);
+    @include background-size(1,1);
+    width:$size;
+    min-width:$size;
+    height:$size;
+    min-height:$size;
+    @include border-radius($size_middle);
+    border:0;
+    overflow:hidden;
+    border: $border;
+    &[isNotIdentified]{
+      @include flexbox;
+      @include justify-content(center);
+      @include flex-flow(row nowrap);
+      @include align-items(center);
+      & > .icons{
+        position: relative;
+        @include flexbox;
+        @include justify-content(center);
+        @include flex-flow(row nowrap);
+        @include align-items(flex-end);
+        & > [name="md-person"]{font-size: $size_middle;}
+        & > [name="md-warning"]{
+          font-size: floor($size_middle / 1.5);
+          margin-left: - floor($size_middle / 2);
+          color: color($colors, primary);
+        }
+      }
+    }
+  }
+  
+  @mixin clockGame($size: 123px, $bkg: $grey, $color: $grey_dark){
+    width: $size;
+    min-width: $size;
+    max-width: $size;
+    height: $size;
+    min-height: $size;
+    max-height: $size;
+    & > .watch-content{
+      position:relative;
+      @include flexbox;
+      @include justify-content(center);
+      @include flex-flow(column nowrap);
+      @include align-items(center);
+      width: $size;
+      min-width: $size;
+      max-width: $size;
+      height: $size;
+      min-height: $size;
+      max-height: $size;
+      margin-left: 0px;
+      margin-top: 0px;
+      & > .time {
+        position:relative;
+        width: $size;
+        height: $size;
+        @include opacity(0.9);
+        & > .content-charts {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          & > #cont-timer {
+            width: $size;
+            height: $size;
+            margin: 0 auto;
+          }
+        }
+        & > .bkg-chart{
+          position: absolute;
+          width: $size - 25;
+          height: $size - 25;
+          @include border-radius($size);
+          top:10px;
+          left:12px;
+          background-color: $grey;
+        }
+        & > .count {
+          position: absolute;
+          @include flexbox;
+          @include justify-content(center);
+          @include flex-flow(column nowrap);
+          @include align-items(center);
+          color: $color;
+          font-size:25px;
+          font-weight:400;
+          width: $size;
+          height: $size;
+          text-align:center;
+          overflow:hidden;
+          top:0px;
+          left:0px;
+          & > .minutes{
+            font-size: 20px;
+            & + .seconds{font-size: 16px;}
+          }
+        }
+      }
+    }
+  }
+  
+  @function getData($parentKey, $childKey){
+    @return map-get($parentKey, $childKey);
+  }

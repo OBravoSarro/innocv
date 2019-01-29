@@ -1,0 +1,63 @@
+app-users{
+    position: relative;
+    & .app-container{
+        padding-bottom: 100px;
+    }
+    & .loader-container{
+        position: relative;
+        width: 100%;
+        margin: 25px 0px;
+        & > .message{
+            position: relative;
+            font-size: 16px;
+            font-weight: bold;
+            margin-left: 12px;
+        }
+    }
+    & .table-container{
+        position: relative;
+        width: 100%;
+        overflow-x: auto;
+        & table{ width: 100%; }
+        & thead{ background-color: mat-color($mat-custom-primary, 500); }
+        & tr.mat-header-row, & tr.mat-footer-row, & tr.mat-row{
+            height: initial;
+        }
+        & tr.mat-row{
+            background-color: #fff;
+            cursor: pointer;
+            @include transition(background-color 0.2s);
+            &:hover{ background-color: #f0f0f0; }
+        }
+        & td.mat-cell, & th.mat-header-cell{
+           padding: 12px;
+        }
+        & .text-container-header{
+            position: relative;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            & > .mat-icon{
+                height: initial;
+            }
+            & > .text-header{
+                position: relative;
+                margin-left: 2px;
+            }
+        }
+        & .mat-sort-header-stem, & .mat-sort-header-pointer-left, & .mat-sort-header-pointer-right, & .mat-sort-header-pointer-middle {
+            background-color: #fff;
+        }
+    }
+    & .add-btn-container{
+        position: fixed;
+        bottom: 12px;
+        right: 12px;
+        font-size: 25px;
+        & mat-icon{
+            width: initial;
+            height: initial;
+            font-size: 35px;
+        }
+    }
+}

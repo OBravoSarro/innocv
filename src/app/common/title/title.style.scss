@@ -1,0 +1,10 @@
+cm-title{
+    position: relative;
+    & > h1{
+        position: relative;
+        font-size: 20px;
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+        border-bottom: solid 1px rgba(#000, 0.15);
+    }
+}

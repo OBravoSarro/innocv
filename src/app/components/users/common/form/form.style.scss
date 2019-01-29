@@ -1,0 +1,64 @@
+$cm_user_form: (
+    sz_input_icon: 25px
+);
+cm-user-form{
+    position: relative;
+    & > .card-form{
+        margin: 0px;
+        & > .input-container{
+            position: relative;
+            width: 100%;
+            & > mat-icon{
+                position: relative;
+                width: map-get($cm_user_form,sz_input_icon);
+                max-width: map-get($cm_user_form,sz_input_icon);
+                min-width: map-get($cm_user_form,sz_input_icon);
+                height: map-get($cm_user_form,sz_input_icon);
+                max-height: map-get($cm_user_form,sz_input_icon);
+                min-height: map-get($cm_user_form,sz_input_icon);
+                &[clear]{
+                    margin-left: - map-get($cm_user_form,sz_input_icon);
+                    text-align: center;
+                    cursor: pointer;
+                    z-index: 2;
+                }
+            }
+            & .mat-form-field{
+                width: calc(100% - #{map-get($cm_user_form,sz_input_icon)});
+                margin-bottom: 12px;
+                & input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+                &.date-picker-cm .mat-form-field-suffix,
+                &.date-picker-cm .mat-form-field-suffix > mat-datepicker-toggle,
+                &.date-picker-cm .mat-form-field-suffix > mat-datepicker-toggle > button{
+                    position: absolute;
+                    width: 100%;
+                    height: 40px;
+                    left: 0px;
+                    top: 0px;
+                }
+                &.date-picker-cm .mat-form-field-suffix > mat-datepicker-toggle > button{
+                    @include opacity(0);
+                }
+            }
+        }
+        & .btns-container{
+            width: 100%;
+            & button{
+               // width: 100px;
+                & mat-icon{
+                    width: initial;
+                    height: initial;
+                }
+                &:first-child mat-icon{
+                    margin-right: 3px;
+                }
+                &:last-child  mat-icon{
+                    margin-left: 3px;
+                }
+            }
+        }
+    }
+}
