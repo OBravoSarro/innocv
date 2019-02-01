@@ -1,0 +1,7 @@
+<div class="not-found-container app-container" padding flex jc-center ai-center column-nowrap>
+  <h1 [innerHTML]="'not_found.title' | translate"></h1>
+  <div class="imgage-container">
+    <img src="./assets/imgs/404.png"/>
+  </div>
+  <a mat-raised-button color="primary" routerLink="/" [innerText]="'not_found.link_text' | translate | uppercase"></a>
+</div>

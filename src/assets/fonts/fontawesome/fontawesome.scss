@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'FontAwesome';
+  font-style: normal;
+  font-weight: 400;
+  //src: url("#{$font-path}/fontawesome/fontawesome-webfont.eot"); /* For IE6-8 */
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+      /*  url( "#{$font-path}/fontawesome/fontawesome-webfont.woff2") format('woff2'),
+       url( "#{$font-path}/fontawesome/fontawesome-webfont.ttf") format('truetype'), */
+       url( "#{$font-path}/fontawesome/fontawesome-webfont.woff") format('woff');
+}
+
+mat-icon[fontawesome] {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+@import "./fontawesome_icons";

@@ -1,0 +1,24 @@
+$colors: (
+  	primary: 		#ad232d,
+  	primary_lg: 	#d33c3e,
+	primary_dk: 	#c61619,
+	secondary_lg:  	#f09a60,
+	secondary:  	#ed8844,
+	secondary_dk:  	#eb803e,
+  	danger:     	#f53d3d,
+  	medium: 		#7c8382,
+  	light:      	#f4f4f4,
+  	dark:       	#222,
+  	green:			#43A047,
+	grey:   		#bdbdbd,
+	grey_medium:	darken(#bdbdbd, 25%),
+	grey_dk: 		darken(#bdbdbd, 40%),
+	grey_lg: 		lighten(#bdbdbd, 25%),
+	yellow:			#FFEB3B,
+	yellow_lg:		#FFEE58,
+	yellow_dk:		#FBC02D
+);
+
+$app_setting: (
+    width_content: 1024px
+);

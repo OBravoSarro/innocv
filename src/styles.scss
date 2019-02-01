@@ -1,1 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./theme/helpers/reset";
+@import "./theme/flexbox";
+@import "./theme/util";
+@import "./theme/images";
+
+@import '~@angular/material/theming';
+@import './theme/custom.material.scss';
+
+@include mat-core();
+
+$custom-app-primary: mat-palette($mat-custom-primary);
+$custom-app-accent:  mat-palette($mat-custom-secondary, 500, A100, A400);
+$custom-app-warn:  mat-palette($mat-custom-red);
+$custom-app-theme: mat-light-theme($custom-app-primary, $custom-app-accent, $custom-app-warn);
+@include angular-material-theme($custom-app-theme);
+
+@import './theme/variables';
+$font-path: "./assets/fonts";
+$assets-path: './assets/';
+
+@import "./assets/fonts/fontawesome/fontawesome";
+@import "./assets/fonts/material_icons/material_icons";
+
+html{
+    background-color:#f2f2f2;
+    height:100%;
+}
+body{
+    @include unselectable;
+    background-color:#f2f2f2;
+    height:100%;
+    font-size:14px;
+    font-family:Arial, Helvetica, sans-serif;
+    border:0;
+    margin:0;
+    padding:0;
+    cursor:default;
+    color:#000;
+    *:focus{outline: 0;}
+    @import "./theme/helpers/flex-attributes";
+    & .mat-card{
+        margin:8px;
+    }
+    & mat-form-field.full-width{width:100%;}
+    .app-container{
+        margin: 0 auto;
+        max-width: map-get($app_setting, width_content);
+    }
+    & [padding]{
+        padding: 12px;
+    }
+}
+/* @import './app/common/title/title.style';
+
+@import './app/components/users/users.style';
+@import './app/components/users/common/form/form.style';
+@import './app/components/users/create/create.style';
+@import './app/components/users/edit/edit.style'; */

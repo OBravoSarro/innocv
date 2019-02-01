@@ -1,0 +1,7 @@
+@import "~src/theme/variables";
+mat-toolbar{
+    background-color: map-get($colors, dark);
+    & > img{
+        max-width: 100%;
+    }
+}
