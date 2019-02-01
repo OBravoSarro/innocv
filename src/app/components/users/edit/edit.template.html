@@ -1,3 +1,4 @@
 <div class="app-container" padding>
-   PAGINA DE EDIT
+   <cm-title [titleText]="'users.titles.edit'"></cm-title>
+   <cm-user-form (sendDataEvent)="updateUser($event)" [editData]="user" *ngIf="!loading"></cm-user-form>
 </div>

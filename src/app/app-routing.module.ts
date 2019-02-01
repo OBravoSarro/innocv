@@ -8,7 +8,7 @@ const routes: Routes = [
   	{path:'', component:UsersComponent},
   	{path:'users', component:UsersComponent},
   	{path:'users/create', component:UsersCreateComponent},
-  	{path:'users/edit:id', component:UsersEditComponent},
+  	{path:'users/edit/:id', component:UsersEditComponent},
   	{path:'**', component:UsersComponent}
 ];
 

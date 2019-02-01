@@ -3,6 +3,9 @@
 	"send":"enviar",
 	"users":{
 		"loading_users":"cargando usuarios",
+		"empty_get_users":"no se han encontrado usuarios",
+		"get_users_error":"se ha producido un error<br/>al solicitar los usuarios",
+		"retry":"volver a intentar",
 		"id":"id",
 		"name":"nombre",
 		"birthdate":"nacimiento",

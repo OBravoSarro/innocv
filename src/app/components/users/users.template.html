@@ -4,10 +4,18 @@
 
     <div class="loader-container" flex jc-center ai-center row-nowrap *ngIf="loading">
         <mat-spinner mode="indeterminate" color="primary" [diameter]="30"></mat-spinner>
-        <div class="message" [innerText]="'users.loading_users' | translate"></div>
+        <div class="message" [innerText]="'users.loading_users' | translate | capitalize:'first'"></div>
     </div>
 
-    <div class="table-container" [hidden]="loading">
+    <div class="messages-container" *ngIf="!loading && (haveError || dataSource.data.length == 0)" flex jc-center ai-center column-nowrap >
+        <div class="text" [innerText]="'users.empty_get_users' | translate | capitalize:'first'" *ngIf="!haveError"></div>
+        <div class="text" [innerHTML]="'users.get_users_error' | translate | capitalize:'first'" error *ngIf="haveError"></div>
+        <button mat-raised-button color="primary" (click)="getUsers()">
+            <span [innerText]="'users.retry' | translate | capitalize:'first'"></span> <mat-icon fontawesome="refresh"></mat-icon>
+        </button>
+    </div>
+
+    <div class="table-container" [hidden]="loading || dataSource.data.length == 0">
         <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
             <ng-container matColumnDef="id">

@@ -13,7 +13,7 @@ import { DateValidator } from '../../../../common/validations/validations.servic
 		{provide: MAT_DATE_LOCALE, useValue: 'ja-JP'},
 		{provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
 		{provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
-	  ]
+	]
 })
 
 export class UserFormComponent implements OnInit {
@@ -21,7 +21,7 @@ export class UserFormComponent implements OnInit {
 
 
 	@Input() editData:User;
-	@Output() sendDataEvent:EventEmitter<UserCreate> = new EventEmitter();
+	@Output() sendDataEvent:EventEmitter<UserCreate | User> = new EventEmitter();
 	public credentials:UserCredentials;
 	public isEditForm:boolean;
 
@@ -40,7 +40,12 @@ export class UserFormComponent implements OnInit {
 
 	public sendData = ():void => {
 		if(this.isFormValid()){
-			const elementData:UserCreate = new UserCreate(this.credentials.name.value, this.credentials.birthdate.value);
+			let elementData:UserCreate | User;
+			if(this.isEditForm) {
+				elementData = new User(this.credentials.id.value, this.credentials.name.value, this.credentials.birthdate.value.add(1, 'days'))
+			}else{
+				elementData = new UserCreate(this.credentials.name.value, this.credentials.birthdate.value.add(1, 'days'));
+			}
 			this.sendDataEvent.emit(elementData);
 		}
 	}
@@ -79,7 +84,12 @@ export class UserFormComponent implements OnInit {
 
 	ngOnInit() {
 		if(typeof(this.editData) != 'undefined'){
+			this.credentials.id.setValue(this.editData.id);
+			this.credentials.name.setValue(this.editData.name);
+			this.credentials.birthdate.setValue(this.editData.birthdate);
 			this.isEditForm = true;
+		}else{
+
 		}
 	}
 
