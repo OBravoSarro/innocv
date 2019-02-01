@@ -1,6 +1,10 @@
 {
 	"return":"volver",
 	"send":"enviar",
+	"not_found":{
+		"title":"<span>Oops!</span> Esto es incómodo ... Estás buscando <br/> algo que en realidad no existe.",
+		"link_text":"Vuelve amigo, vuelve"
+	},
 	"users":{
 		"loading_users":"cargando usuarios",
 		"empty_get_users":"no se han encontrado usuarios",
