@@ -1,0 +1,19 @@
+@import "~src/theme/variables";
+@import "~src/theme/util";
+
+.delete-container{
+    position: relative;
+    margin-top: 75px;
+    & > .text{
+        font-weight: bold;
+        color: map-get($colors, danger);
+        font-size: 16px;
+        margin-right: 5px;
+        text-align: center;
+    }
+    & > button mat-icon{
+        width: initial;
+        height: initial;
+        margin-left: 5px;
+    }
+}

@@ -1,6 +1,7 @@
 {
 	"return":"volver",
 	"send":"enviar",
+	"delete":"eliminar",
 	"not_found":{
 		"title":"<span>Oops!</span> Esto es incómodo... estás buscando <br/> algo que en realidad no existe.",
 		"link_text":"Vuelve amigo, vuelve"
@@ -16,7 +17,8 @@
 		"titles":{
 			"list":"lista de usuarios",
 			"create":"nuevo usuario",
-			"edit":"editar usuario"
+			"edit":"editar usuario",
+			"delete":"eliminar usuario"
 		},
 		"form":{
 			"id":"id",
@@ -35,6 +37,9 @@
 					"1":"Fecha no válida, puedes ayudarte del botón de calendario para más comodidad"
 				}
 			}
+		},
+		"delete":{
+			"message1":"¿Deseas eliminar este usuario?"
 		}
 	}
 }
