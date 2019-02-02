@@ -7,40 +7,24 @@ import { HeaderComponent } from './shell/header/header.component';
 import { MainComponent } from './shell/main/main.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
-import { CapitalizePipe } from '../pipes/capitalize/capitalize.pipe';
-
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/languages/', '.json');
-}
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
     ShellComponent,
     HeaderComponent,
     MainComponent,
-    NotFoundComponent,
-    CapitalizePipe
+    NotFoundComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
+    SharedModule,
     MatToolbarModule,
-    MatButtonModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-			loader: {
-				provide: TranslateLoader,
-				useFactory: (createTranslateLoader),
-				deps: [HttpClient]
-			}
-		})
+    MatButtonModule
   ],
   exports: [
     ShellComponent
