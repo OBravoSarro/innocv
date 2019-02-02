@@ -3,8 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 
 const routes: Routes = [
-  	{path:'', component:NotFoundComponent},
-  	{path:'**', component:NotFoundComponent}
+  	{path:'', loadChildren: './user/user.module#UserModule'},
+  	{path:'user', loadChildren: './user/user.module#UserModule'},
+  	{path:'not-found', component:NotFoundComponent}/* ,
+  	{path:'**', redirectTo: 'not-found'} */
 ];
 
 @NgModule({

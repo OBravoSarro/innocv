@@ -1,0 +1,12 @@
+<div class="app-container" padding>
+  <app-user-title [titleText]="'users.titles.edit'"></app-user-title>
+  <app-user-form (sendDataEvent)="updateUser($event)" [editData]="user" *ngIf="!loading"></app-user-form>
+
+  <div class="delete-container" *ngIf="!loading" flex jc-center ai-center column-nowrap>
+    <div class="text" [innerText]="'users.delete.message1' | translate" padding></div>
+    <button mat-raised-button color="warn" (click)="deleteUser()">
+      <span [innerText]="'delete' | translate | capitalize:'first'"></span> <mat-icon material-icon>delete</mat-icon>
+    </button>
+  </div>
+
+</div>

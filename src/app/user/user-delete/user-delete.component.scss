@@ -1,0 +1,67 @@
+@import "~src/theme/variables";
+@import "~src/theme/util";
+$cm_delete_user: (
+	size_decoration: 100px
+);
+.decoration-container{
+    position: relative;
+    margin-bottom: 24px;
+    & > .decoration{
+        position: relative;
+        width: map-get($cm_delete_user, size_decoration);
+        min-width: map-get($cm_delete_user, size_decoration);
+        max-width: map-get($cm_delete_user, size_decoration);
+        height: map-get($cm_delete_user, size_decoration);
+        min-height: map-get($cm_delete_user, size_decoration);
+        max-height: map-get($cm_delete_user, size_decoration);
+        @include border-radius(map-get($cm_delete_user, size_decoration));
+        background-color: rgba(map-get($colors, dark), 0.15);
+        & > mat-icon{
+            position: relative;
+            width: initial;
+            height: initial;
+            font-size: floor(map-get($cm_delete_user, size_decoration) / 1.5);
+            color: map-get($colors, danger);
+        }
+    }
+}
+.element{
+    position: relative;
+    & > .title{
+        position: relative;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        text-align: center;
+        background-color: map-get($colors, primary);
+        & > mat-icon{
+            width: initial;
+            height: initial;
+            margin-right: 5px;
+        }
+    }
+    & > .value{
+        position: relative;
+        font-size: 20px;
+        font-weight: bold;
+        color: map-get($colors, primary);
+        border: solid 1px map-get($colors, primary);
+        text-align: center;
+        margin-bottom: 24px;
+    }
+}
+.btns-container{
+    width: 100%;
+    & button{
+        & mat-icon{
+            width: initial;
+            height: initial;
+        }
+        &:first-child mat-icon{
+            margin-right: 3px;
+        }
+        &:last-child  mat-icon{
+            margin-left: 3px;
+        }
+    }
+}

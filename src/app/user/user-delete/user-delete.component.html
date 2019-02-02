@@ -1,0 +1,39 @@
+<div class="app-container" padding>
+  <app-user-title [titleText]="'users.titles.delete'"></app-user-title>
+  <mat-card *ngIf="!loading">
+    <div class="decoration-container" flex jc-start ai-center column-nowrap>
+      <div class="decoration" flex jc-center ai-center column-nowrap>
+        <mat-icon material-icon>delete</mat-icon>
+      </div>
+    </div>
+    <div class="element">
+      <div class="title" flex jc-center ai-center row-nowrap padding>
+        <mat-icon fontawesome="key"></mat-icon>
+        <div class="text-header" [innerText]="'users.id' | translate | capitalize:'first'"></div>
+      </div>
+      <div class="value" padding>{{user.id}}</div>
+    </div>
+    <div class="element">
+      <div class="title" flex jc-center ai-center row-nowrap padding>
+        <mat-icon fontawesome="user-o"></mat-icon>
+        <div class="text-header" [innerText]="'users.name' | translate | capitalize:'first'"></div>
+      </div>
+      <div class="value" padding>{{user.name}}</div>
+    </div>
+    <div class="element">
+      <div class="title" flex jc-center ai-center row-nowrap padding>
+        <mat-icon fontawesome="calendar"></mat-icon>
+        <div class="text-header" [innerText]="'users.birthdate' | translate | capitalize:'first'"></div>
+      </div>
+      <div class="value" padding>{{user.birthdate | date: 'dd/MM/yyyy'}}</div>
+    </div>
+    <div class="btns-container" flex jc-between ai-start row-nowrap>
+        <button mat-raised-button color="accent" (click)="returnComponent()">
+            <mat-icon material-icon>keyboard_backspace</mat-icon> <span [innerText]="'return' | translate | capitalize:'first'"></span>
+        </button>
+        <button mat-raised-button color="warn" (click)="deleteUser()">
+            <span [innerText]="'delete' | translate | capitalize:'first'"></span> <mat-icon material-icon>delete</mat-icon>
+        </button>
+    </div>
+  </mat-card>
+</div>
