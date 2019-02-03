@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../shared/user.service';
-import { UserCreate } from '../shared/user.model';
+import { User } from '../shared/user.model';
 import { Router } from '@angular/router';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
@@ -21,7 +21,7 @@ export class UserNewComponent implements OnInit {
     private dialog:MatDialog
   ) { }
 
-  public createUser = (dataSend:UserCreate):void => {
+  public createUser = (dataSend:User):void => {
     const loading = this.dialog.open(DialogComponent, {disableClose:true, data:{type:2, text:'users.delete.loading'}});
     this.userService.newUser(dataSend).subscribe(res => {
       if(!res.error){

@@ -2,11 +2,10 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { Router } from '@angular/router';
-//import { UserCredentials, UserCreate, User } from '../../users.model';
 import { FormControl, Validators } from '@angular/forms';
 import { DateValidator } from '../../../shared/validations/date-validator.service';
-import { User, UserCreate, UserCredentials } from '../user.model';
-//import { DateValidator } from '../../../../common/validations/validations.service';
+import { User, UserCredentials } from '../user.model';
+import * as moment from "moment";
 
 @Component({
   selector: 'app-user-form',
@@ -20,8 +19,8 @@ import { User, UserCreate, UserCredentials } from '../user.model';
 })
 export class UserFormComponent implements OnInit {
 
-  @Input() editData:User;
-	@Output() sendDataEvent:EventEmitter<UserCreate | User> = new EventEmitter();
+  	@Input() editData:User;
+	@Output() sendDataEvent:EventEmitter<User> = new EventEmitter();
 	public credentials:UserCredentials;
 	public isEditForm:boolean;
 
@@ -31,20 +30,23 @@ export class UserFormComponent implements OnInit {
   ) {
     this.adapter.setLocale('es');
 		this.credentials = {
-			id: new FormControl('', [Validators.pattern(/^-?(0|[1-9]\d*)?$/), Validators.min(1)]),
 			name: new FormControl('', [Validators.required, Validators.minLength(5) , Validators.maxLength(20)]),
-			birthdate: new FormControl('', [ DateValidator()])
+			birthdate: new FormControl('', [Validators.required, DateValidator()])
 		};
 		this.isEditForm = false;
   }
 
   public sendData = ():void => {
 		if(this.isFormValid()){
-			let elementData:UserCreate | User;
+			let elementData:User;
 			if(this.isEditForm) {
-				elementData = new User(this.credentials.id.value, this.credentials.name.value, this.credentials.birthdate.value.add(1, 'days'))
+				elementData = {
+					id:this.editData.id, name:this.credentials.name.value, birthdate:this.credentials.birthdate.value.add(1, 'hours')
+				};
 			}else{
-				elementData = new UserCreate(this.credentials.name.value, this.credentials.birthdate.value.add(1, 'days'));
+				elementData = {
+					name:this.credentials.name.value, birthdate:this.credentials.birthdate.value.add(1, 'hours')
+				}
 			}
 			this.sendDataEvent.emit(elementData);
 		}
@@ -68,14 +70,13 @@ export class UserFormComponent implements OnInit {
 
 	public getErrorMessage(inputName:string):number {
 		let error:number = 0;
-		if(inputName == 'id' && String(this.credentials[inputName].value).length > 0){
-			error = this.credentials.id.hasError('pattern') ? 1:
-			this.credentials.id.hasError('min') ? 2 : 0;
-		}else if(inputName == 'name' && String(this.credentials[inputName].value).length > 0){
-			error = this.credentials.name.hasError('minlength') ? 1:
-			this.credentials.name.hasError('maxlength') ? 2 : 0;
+		if(inputName == 'name'){
+			error = this.credentials.name.hasError('required') ? 1:
+					this.credentials.name.hasError('minlength') ? 2:
+					this.credentials.name.hasError('maxlength') ? 3 : 0;
 		}else if(inputName == 'birthdate'){
-			error = this.credentials.birthdate.hasError('invalidDate') ? 1:0;
+			error = this.credentials.birthdate.hasError('required') ? 1:
+					this.credentials.birthdate.hasError('invalidDate') ? 2:0;
 		}
 		return error;
 	}
@@ -84,9 +85,8 @@ export class UserFormComponent implements OnInit {
 
 	ngOnInit() {
 		if(typeof(this.editData) != 'undefined'){
-			this.credentials.id.setValue(this.editData.id);
 			this.credentials.name.setValue(this.editData.name);
-			this.credentials.birthdate.setValue(this.editData.birthdate);
+			this.credentials.birthdate.setValue(moment(this.editData.birthdate));
 			this.isEditForm = true;
 		}else{
 

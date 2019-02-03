@@ -9,13 +9,6 @@ export class User{
 }
 export class UserCredentials{
 	constructor(
-		public id:FormControl,
-		public name:FormControl,
-		public birthdate:FormControl
-	){}
-}
-export class UserCreate{
-	constructor(
 		public name:FormControl,
 		public birthdate:FormControl
 	){}

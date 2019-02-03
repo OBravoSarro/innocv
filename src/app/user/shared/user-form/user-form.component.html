@@ -1,17 +1,13 @@
 
 <mat-card class="card-form" flex jc-start ai-start column-nowrap>
-  <div class="input-container" flex jc-start ai-center row-nowrap *ngIf="isEditForm">
+  <div class="input-container" flex jc-start ai-start row-nowrap *ngIf="isEditForm">
       <mat-icon fontawesome="key"></mat-icon>
-      <mat-form-field>
-          <input type="number" [readonly]="true" matInput [placeholder]="'users.form.id' | translate | capitalize:'first'" [formControl]="credentials.id">
-          <mat-error *ngIf="credentials.id.invalid && getErrorMessage('id') != 0" [innerText]="'users.form.errors.id.'+getErrorMessage('id') | translate | capitalize:'first'"></mat-error>
-      </mat-form-field>
-      <!-- <mat-icon material-icon clear (click)="clearInput('id')" *ngIf="credentials.id.value.toString().length > 0">close</mat-icon> -->
+      <div class="text" [innerText]="editData.id"></div>
   </div>
   <div class="input-container" flex jc-start ai-center row-nowrap>
       <mat-icon fontawesome="user-o"></mat-icon>
       <mat-form-field>
-          <input matInput [placeholder]="'users.form.name' | translate | capitalize:'first'" [formControl]="credentials.name" maxlength="20" input-clear="primary">
+          <input matInput [placeholder]="'users.form.name' | translate | capitalize:'first'" [formControl]="credentials.name" maxlength="20" required input-clear="primary">
           <mat-error *ngIf="credentials.name.invalid && getErrorMessage('name') != 0" [innerText]="'users.form.errors.name.'+getErrorMessage('name') | translate | capitalize:'first'"></mat-error>
       </mat-form-field>
       <mat-icon material-icon clear (click)="clearInput('name')" *ngIf="credentials.name.value.toString().length > 0">close</mat-icon>
@@ -19,8 +15,7 @@
   <div class="input-container" flex jc-start ai-center row-nowrap>
       <mat-icon fontawesome="calendar"></mat-icon>
       <mat-form-field class="date-picker-cm">
-          <input [readonly]="true" matInput (click)="picker.open()" [matDatepicker]="picker" [placeholder]="'users.form.birthdate' | translate | capitalize:'first'" [formControl]="credentials.birthdate">
-          <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> -->
+          <input [readonly]="true" matInput (click)="picker.open()" [matDatepicker]="picker" required [placeholder]="'users.form.birthdate' | translate | capitalize:'first'" [formControl]="credentials.birthdate">
           <mat-datepicker #picker></mat-datepicker>
           <mat-error *ngIf="credentials.birthdate.invalid && getErrorMessage('birthdate') != 0" [innerText]="'users.form.errors.birthdate.'+getErrorMessage('birthdate') | translate | capitalize:'first'"></mat-error>
       </mat-form-field>

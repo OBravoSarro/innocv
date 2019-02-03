@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-//import { BrowserModule } from '@angular/platform-browser';
 import { CapitalizePipe } from '../pipes/capitalize/capitalize.pipe';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TitleComponent } from './title/title.component';
 import { DialogComponent } from './dialog/dialog.component';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -17,6 +17,7 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     CapitalizePipe,
+    TitleComponent,
     DialogComponent
   ],
   imports: [
@@ -33,7 +34,8 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   exports: [
     CapitalizePipe,
-    TranslateModule
+    TranslateModule,
+    TitleComponent
   ]
 })
 export class SharedModule {

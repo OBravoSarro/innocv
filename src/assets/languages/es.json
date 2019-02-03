@@ -19,7 +19,7 @@
 		"birthdate":"nacimiento",
 		"titles":{
 			"list":"lista de usuarios",
-			"create":"nuevo usuario",
+			"new":"nuevo usuario",
 			"edit":"editar usuario",
 			"delete":"eliminar usuario"
 		},
@@ -28,16 +28,14 @@
 			"name":"nombre",
 			"birthdate":"nacimiento",
 			"errors":{
-				"id":{
-					"1":"El identificador debe ser un número entero",
-					"2":"El identificador debe ser mayor de 1"
-				},
 				"name":{
-					"1":"El nombre debe tener más de 5 caracteres",
-					"2":"El nombre no puede tener más de 20 caracteres"
+					"1":"El nombre es obligatorio",
+					"2":"El nombre debe tener más de 5 caracteres",
+					"3":"El nombre no puede tener más de 20 caracteres"
 				},
 				"birthdate":{
-					"1":"Fecha no válida, puedes ayudarte del botón de calendario para más comodidad"
+					"1":"La fecha es obligatoria",
+					"2":"Fecha no válida"
 				}
 			}
 		},

@@ -14,10 +14,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule, MatCardModule, MatInputModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UserFormComponent } from './shared/user-form/user-form.component';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UserTitleComponent } from './shared/user-title/user-title.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +24,7 @@ import { UserTitleComponent } from './shared/user-title/user-title.component';
     UserListComponent,
     UserEditComponent,
     UserNewComponent,
-    UserFormComponent,
-    UserTitleComponent
+    UserFormComponent
   ],
   providers: [],
   imports: [
