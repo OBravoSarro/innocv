@@ -20,6 +20,31 @@
             color: map-get($colors, danger);
         }
     }
+    & > .btns-container{
+        position: relative;
+        & > .separate{
+            position: relative;
+            width: 100%;
+            margin: 20px 0px;
+            text-align: center;
+            & > span{
+                position: relative;
+                background-color: map-get($colors, light);
+                padding: 0px 12px;
+                z-index: 2;
+            }
+            &::after{
+                content: "";
+                display: block;
+                position: absolute;
+                top: calc(50% - 1px);
+                left: 0px;
+                width: 100%;
+                height: 1px;
+                background-color: map-get($colors, dark);
+            }
+        }
+    }
     & mat-icon{
         width: initial;
         height: initial;
@@ -30,6 +55,9 @@
     position: relative;
     width: 100%;
     overflow-x: auto;
+    & > .filter-container{
+        position: relative;
+    }
     & > table {
         width: 100%;
         background-color: map-get($colors, secondary);

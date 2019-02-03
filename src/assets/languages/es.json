@@ -3,6 +3,9 @@
 	"send":"enviar",
 	"delete":"eliminar",
 	"accept":"Aceptar",
+	"new_user":"crear usuario",
+	"search_user":"buscar usuario",
+	"or":"o",
 	"not_found":{
 		"title":"<span>Oops!</span> Esto es incómodo... estás buscando <br/> algo que en realidad no existe.",
 		"link_text":"Vuelve amigo, vuelve"
