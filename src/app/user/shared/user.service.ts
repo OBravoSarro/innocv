@@ -28,51 +28,52 @@ export class UserService {
     return body || { };
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T> (operation = 'operation', result?:any) {
     return (error: any): Observable<T> => {
 
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+      // console.error(error);
+      // console.error(error.status);
+      // console.error(`${operation} failed: ${error.message}`);
+      let errMsg = {error: true, errorStatus: error.status};
+      //console.error(errMsg);
 
-      // TODO: better job of transforming error for user consumption
-      console.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
+      return of(errMsg as any);
     };
+
   }
 
   public getUsers():Observable<any> {
     return this.http.get(environment.apiPath + 'User').pipe(
-      map(this.extractData)
+      map(this.extractData),
+      catchError(this.handleError<any>('getUsers'))
     );
   }
 
-  public getUser(id:number):Observable<User> {
+  public getUser(id:number):Observable<any> {
     return this.http.get(environment.apiPath + 'user/'+id).pipe(
-      map(this.extractData)
+      map(this.extractData),
+      catchError(this.handleError<any>('getUser'))
     );
   }
 
   public newUser(data:any):Observable<any> {
-    console.log(data);
     return this.http.post<any>(environment.apiPath + 'user', JSON.stringify(data), this.httpOptions).pipe(
-      tap((data) => console.log(`post`), data),
-      catchError(this.handleError<any>('postCall'))
+      map(this.extractData),
+      catchError(this.handleError<any>('newUser'))
     );
   }
 
   public updateUser (data:any):Observable<any> {
     return this.http.put(environment.apiPath + 'user', JSON.stringify(data), this.httpOptions).pipe(
-      tap((data) => console.log(`put`), data),
-      catchError(this.handleError<any>('putCall'))
+      map(this.extractData),
+      catchError(this.handleError<any>('updateUser'))
     );
   }
 
   public deleteUser (id:number):Observable<any> {
     return this.http.delete<any>(environment.apiPath + 'user/' + id, this.httpOptions).pipe(
-      tap((data) => console.log(`delete`)),
-      catchError(this.handleError<any>('deleteCall'))
+      map(this.extractData),
+      catchError(this.handleError<any>('deleteUser'))
     );
   }
 

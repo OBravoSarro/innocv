@@ -1,0 +1,26 @@
+@import "~src/theme/variables";
+.error-container{
+    position: relative;
+    & > .text{
+        position: relative;
+        color:map-get($colors, danger);
+        font-weight: bold;
+        text-align: center;
+    }
+}
+.loading-container{
+    position: relative;
+    & > .loader{
+        position: relative;
+        & > mat-progress-spinner{
+            margin: 0 auto;
+        }
+    }
+    & > .text{
+        position: relative;
+        color:map-get($colors, dark);
+        font-weight: bold;
+        text-align: center;
+        margin-top: 12px;
+    }
+}

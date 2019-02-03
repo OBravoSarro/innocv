@@ -2,21 +2,27 @@
 	"return":"volver",
 	"send":"enviar",
 	"delete":"eliminar",
+	"accept":"Aceptar",
+	"new_user":"crear usuario",
+	"search_user":"buscar usuario",
+	"or":"o",
 	"not_found":{
 		"title":"<span>Oops!</span> Esto es incómodo... estás buscando <br/> algo que en realidad no existe.",
 		"link_text":"Vuelve amigo, vuelve"
 	},
 	"users":{
 		"loading_users":"cargando usuarios",
+		"loading_user":"cargando usuario",
 		"empty_get_users":"no se han encontrado usuarios",
 		"get_users_error":"se ha producido un error<br/>al solicitar los usuarios",
+		"get_user_error":"se ha producido un error al buscar el usuario",
 		"retry":"volver a intentar",
 		"id":"id",
 		"name":"nombre",
 		"birthdate":"nacimiento",
 		"titles":{
 			"list":"lista de usuarios",
-			"create":"nuevo usuario",
+			"new":"nuevo usuario",
 			"edit":"editar usuario",
 			"delete":"eliminar usuario"
 		},
@@ -25,21 +31,32 @@
 			"name":"nombre",
 			"birthdate":"nacimiento",
 			"errors":{
-				"id":{
-					"1":"El identificador debe ser un número entero",
-					"2":"El identificador debe ser mayor de 1"
-				},
 				"name":{
-					"1":"El nombre debe tener más de 5 caracteres",
-					"2":"El nombre no puede tener más de 20 caracteres"
+					"1":"El nombre es obligatorio",
+					"2":"El nombre debe tener más de 5 caracteres",
+					"3":"El nombre no puede tener más de 20 caracteres"
 				},
 				"birthdate":{
-					"1":"Fecha no válida, puedes ayudarte del botón de calendario para más comodidad"
+					"1":"La fecha es obligatoria",
+					"2":"Fecha no válida"
 				}
 			}
 		},
+		"new":{
+			"success":"Usuario creado con éxito",
+			"error":"Se ha producido un error y el usuario no ha podido crearse",
+			"loading":"creando usuario"
+		},
+		"edit":{
+			"success":"Usuario modificado con éxito",
+			"error":"Se ha producido un error y el usuario no ha podido editarse",
+			"loading":"editando usuario"
+		},
 		"delete":{
-			"message1":"¿Deseas eliminar este usuario?"
+			"message1":"¿Deseas eliminar este usuario?",
+			"success":"Usuario eliminado con éxito",
+			"error":"Se ha producido un error y el usuario no ha podido borrarse",
+			"loading":"eliminando usuario"
 		}
 	}
 }
