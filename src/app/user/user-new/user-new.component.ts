@@ -22,20 +22,20 @@ export class UserNewComponent implements OnInit {
   ) { }
 
   public createUser = (dataSend:User):void => {
-    const loading = this.dialog.open(DialogComponent, {disableClose:true, data:{type:2, text:'users.delete.loading'}});
+    const loading = this.dialog.open(DialogComponent, {disableClose:true, data:{type:2, text:'users.new.loading'}});
     this.userService.newUser(dataSend).subscribe(res => {
       if(!res.error){
-        this.translate.get(['users.delete.success', 'accept']).subscribe((res:Object) => {
-          this.snackBar.open(res['users.delete.success'], res['accept'], {duration: 4000});
+        this.translate.get(['users.new.success', 'accept']).subscribe((res:Object) => {
+          this.snackBar.open(res['users.new.success'], res['accept'], {duration: 4000});
           this.router.navigate ( [ '/user' ] );
         });
       }else{
-        this.dialog.open(DialogComponent, {disableClose:false, data:{type:1, text:'users.delete.error'}});
+        this.dialog.open(DialogComponent, {disableClose:false, data:{type:1, text:'users.new.error'}});
       }
       loading.close();
     }, (err) => {
       //console.error(err);
-      this.dialog.open(DialogComponent, {disableClose:false, data:{type:1, text:'users.delete.error'}});
+      this.dialog.open(DialogComponent, {disableClose:false, data:{type:1, text:'users.new.error'}});
       loading.close();
     });
   }
