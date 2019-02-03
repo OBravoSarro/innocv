@@ -1,0 +1,9 @@
+<div class="error-container" *ngIf="configDialog.type && configDialog.type == 1">
+  <div class="text" [innerText]="configDialog.text | translate | capitalize:'first'" *ngIf="configDialog.text.length > 0"></div>
+</div>
+<div class="loading-container" *ngIf="configDialog.type && configDialog.type == 2" lex>
+  <div class="loader">
+    <mat-progress-spinner mode="indeterminate" [diameter]="50"></mat-progress-spinner>
+  </div>
+  <div class="text" [innerText]="configDialog.text | translate | capitalize:'first'" *ngIf="configDialog.text.length > 0"></div>
+</div>

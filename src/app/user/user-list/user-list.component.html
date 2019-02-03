@@ -1,12 +1,6 @@
 <div class="app-container" padding>
 
-    <app-user-title [titleText]="'users.titles.edit'"></app-user-title>
-
-    <div class="loader-container" flex jc-center ai-center row-nowrap *ngIf="loading">
-        <mat-spinner mode="indeterminate" color="primary" [diameter]="30"></mat-spinner>
-        <div class="message" [innerText]="'users.loading_users' | translate | capitalize:'first'"></div>
-    </div>
-
+    <app-user-title [titleText]="'users.titles.list'"></app-user-title>
     <div class="messages-container" *ngIf="!loading && (haveError || dataSource.data.length == 0)" flex jc-center ai-center column-nowrap >
         <div class="text" [innerText]="'users.empty_get_users' | translate | capitalize:'first'" *ngIf="!haveError"></div>
         <div class="text" [innerHTML]="'users.get_users_error' | translate | capitalize:'first'" error *ngIf="haveError"></div>

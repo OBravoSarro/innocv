@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
+//import { BrowserModule } from '@angular/platform-browser';
 import { CapitalizePipe } from '../pipes/capitalize/capitalize.pipe';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { DialogComponent } from './dialog/dialog.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/languages/', '.json');
@@ -12,10 +16,13 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    CapitalizePipe
+    CapitalizePipe,
+    DialogComponent
   ],
   imports: [
+    CommonModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
     TranslateModule.forRoot({
 			loader: {
 				provide: TranslateLoader,
