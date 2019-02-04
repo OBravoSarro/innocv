@@ -20,6 +20,10 @@ Interfaze components [Angular Material](https://material.angular.io/).
 
 Parse, validate, manipulate, and display dates and times in JavaScript. [Moment.js](https://momentjs.com/).
 
+## IE
+
+To configure IE use the file /src/polyfills.ts
+
 ## Destination
 
 Pass the Innocv test and be a better frontend developer :wink:
